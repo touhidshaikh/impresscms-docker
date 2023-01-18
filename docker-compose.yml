@@ -4,8 +4,12 @@ services:
     build: .
     ports:
       - "0.0.0.0:80:80"
-      - "0.0.0.0:443:443"
     volumes:
-      - ./impresscms:/var/www/html/
       - ./conf/.htaccess:/var/www/html/.htaccess
-    
+
+  mysql_db:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - "0.0.0.0:3306:3306"
