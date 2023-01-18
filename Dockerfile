@@ -27,7 +27,7 @@ RUN apt-get update -y && apt-get install -y \
 RUN docker-php-ext-install -j$(nproc) iconv \
     && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
-    docker-php-ext-install mbstring \
+    && docker-php-ext-install mbstring \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install zip
@@ -39,6 +39,7 @@ COPY ./impresscms /var/www/html/
 WORKDIR /var/www/html/
 
 RUN chmod -R 755 /var/www/html/
+
 #Writeable
 RUN chmod 777 mainfile.php
 RUN chmod 777 uploads
