@@ -5,8 +5,8 @@ LABEL description="ImpressCMS - Docker Service"
 LABEL version="1.0"
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV MYSQL_ROOT_PASSWORD password123
-
+RUN echo 'mariadb-server-10.0 mysql-server/root_password password password123' | debconf-set-selections
+RUN echo 'mariadb-server-10.0 mysql-server/root_password_again password password123' | debconf-set-selections
 RUN apt-get update -y && apt-get install -y \
     mariadb-server \
     libmcrypt-dev \
@@ -23,8 +23,6 @@ RUN apt-get update -y && apt-get install -y \
     git \
     supervisor \
     net-tools 
-
-RUN service mysql start && mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '$MYSQL_ROOT_PASSWORD'; FLUSH PRIVILEGES;"
 
 RUN docker-php-ext-install -j$(nproc) iconv \
     && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
