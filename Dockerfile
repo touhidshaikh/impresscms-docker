@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV MYSQL_ROOT_PASSWORD password123
 
 RUN apt-get update -y && apt-get install -y \
-    mysql-server \
+    mariadb-server \
     libmcrypt-dev \
     g++ \
     libicu-dev \
