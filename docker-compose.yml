@@ -1,0 +1,11 @@
+version: '3.0'
+services:
+  cms:
+    build: .
+    ports:
+      - "0.0.0.0:80:80"
+      - "0.0.0.0:443:443"
+    volumes:
+      - ./impresscms:/var/www/html/
+      - ./conf/.htaccess:/var/www/html/.htaccess
+    
