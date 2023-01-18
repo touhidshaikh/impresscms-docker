@@ -37,7 +37,14 @@ COPY ./impresscms /var/www/html/
 
 WORKDIR /var/www/html/
 
-RUN chmod -R 755 /var/www/html/impresscms
+RUN chmod -R 755 /var/www/html/
+#Writeable
+RUN chmod 777 mainfile.php
+RUN chmod 777 uploads
+RUN chmod 777 modules
+RUN chmod 777 cache
+RUN chmod 777 templates_c
+
 RUN chown -R www-data:www-data /var/www/html/
 
 EXPOSE 80
