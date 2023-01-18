@@ -27,6 +27,7 @@ RUN apt-get update -y && apt-get install -y \
 RUN docker-php-ext-install -j$(nproc) iconv \
     && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
+    docker-php-ext-install mbstring \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install zip
@@ -44,6 +45,10 @@ RUN chmod 777 uploads
 RUN chmod 777 modules
 RUN chmod 777 cache
 RUN chmod 777 templates_c
+
+#TrustPath
+RUN mkdir /var/www/html/trustpath123
+RUN chmod 777 /var/www/html/trustpath123
 
 RUN chown -R www-data:www-data /var/www/html/
 
