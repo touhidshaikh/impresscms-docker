@@ -93,8 +93,8 @@ if (@empty($vars['DB_HOST'])) {
 	$vars = array_merge($vars, array(
 		'DB_TYPE'        => $db_connection['type'],
 		'DB_HOST'        => 'localhost',
-		'DB_USER'        => '',
-		'DB_PASS'        => '',
+		'DB_USER'        => 'root',
+		'DB_PASS'        => 'password123',
 		'DB_PCONNECT'    => 0,
 	));
 
