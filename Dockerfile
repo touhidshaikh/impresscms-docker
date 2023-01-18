@@ -35,7 +35,6 @@ RUN apt-get install -y curl git supervisor net-tools
 RUN a2enmod rewrite
 
 COPY ./impresscms /var/www/html/
-COPY conf/config.php /var/www/html/
 
 RUN chown -R www-data:www-data /var/www/html/
 
