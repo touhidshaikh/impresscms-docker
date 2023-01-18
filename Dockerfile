@@ -5,10 +5,8 @@ LABEL description="ImpressCMS - Docker Service"
 LABEL version="1.0"
 
 ENV DEBIAN_FRONTEND noninteractive
-RUN echo 'mariadb-server-10.0 mysql-server/root_password password password123' | debconf-set-selections
-RUN echo 'mariadb-server-10.0 mysql-server/root_password_again password password123' | debconf-set-selections
+
 RUN apt-get update -y && apt-get install -y \
-    mariadb-server \
     libmcrypt-dev \
     g++ \
     libicu-dev \
